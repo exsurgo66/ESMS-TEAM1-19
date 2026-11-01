@@ -1,0 +1,17 @@
+@font-face {
+  font-family: 'Ethnocentric';
+  src: url('../assets/fonts/Ethnocentric V2.woff2') format('woff2');
+  font-display: swap;
+}
+
+:root {
+   --bg: #021023;
+  --blue: #012063;
+  --yellow: #E7CC44;
+  --red: #CB0119;
+  --text: #F8FAFC;
+  --font-title: 'Ethnocentric', sans-serif;
+  --font-body: 'Sawarabi Mincho', serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--bg); color: var(--text); font-family: var(--font-body); }
