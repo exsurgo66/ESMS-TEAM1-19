@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Orbitron:wght@700&family=Sawarabi+Mincho&display=swap" rel="stylesheet">
 
   <!-- Shared base styles (owner: lead) -->
   <link rel="stylesheet" href="css/style.css">
@@ -21,20 +22,139 @@
   <link rel="stylesheet" href="css/points.css">
   <link rel="stylesheet" href="css/footer.css">
 </head>
-
 <body>
 
- 
-  <header id="navbar"></header>
+
+ <header id="navbar">
+  <a href="#hero" class="logo">CSENIGMA</a>
+
+  <nav class="nav-links">
+    <ul>
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#team">Agents</a></li>
+      <li><a href="#schedule">Planning</a></li>
+      <li><a href="#points">Scoring</a></li>
+      <li><a href="#footer">Contact</a></li>
+    </ul>
+  </nav>
+
+  <a href="#" class="btn-join">Join the case</a>
+</header>
 
  
-  <section id="hero"></section>
+  <section id="hero">
+      <img class="deco scope" src="assets/images/Scope.svg" alt="">
+      <img class="deco print" src="assets/images/Print.svg" alt="">
+      <img class="deco evidence" src="assets/images/evidence.svg" alt="">
+      <img class="deco search" src="assets/images/Search.svg" alt="">
+
+
+     <h1 class="hero-title">Become The Detective</h1>
+     <p class="hero-text">A three-day detective-style challenge. Collect clues, rebuild the story and build your own solution.</p>
+     <div class="hero-badges">
+        <div class="badge">
+          <img src="assets/images/icon-1.svg" alt="">
+          <span class="badge-text">ESI , Oued Smar</span>
+        </div>
+        <div class="badge">
+          <img src="assets/images/icon-2.svg" alt="">
+          <span class="badge-text">15-17 Novermber</span>
+        </div>
+     </div>
+
+        <div class="countdown" id="countdown">
+            <div class="time-box">
+                <span class="time-number" id="days">00</span>
+                <span class="time-label">Days</span>
+            </div>
+
+            <div class="time-box">
+                <span class="time-number" id="hours">00</span>
+                <span class="time-label">Hours</span>
+            </div>
+
+            <div class="time-box">
+                <span class="time-number" id="minutes">00</span>
+                <span class="time-label">Minutes</span>
+            </div>
+
+            <div class="time-box">
+                <span class="time-number" id="seconds">00</span>
+                <span class="time-label">Seconds</span>
+            </div>
+        </div>
+
+     <a href="#" class="btn-join">Join the case</a>
+
+  </section>
 
   <!-- ===== MARQUEE BANNER ===== -->
-  <div id="marquee"></div>
+  <div id="marquee">
+  <div class="marquee-track">
+    <div class="marquee-group">
+      <span>Case open</span>
+      <span>CSEnigma</span>
+      <span>15-17 November</span>
+      <span>ESI</span>
+      <span>Do not cross the line</span>
+      <!-- repeat this set 2 more times so the group is wider than the screen -->
+    </div>
+
+    <!-- exact copy of the group above -->
+    <div class="marquee-group" aria-hidden="true">
+      <span>Case open</span>
+      <span>CSEnigma</span>
+      <span>15-17 November</span>
+      <span>ESI</span>
+      <span>Do not cross the line</span>
+    </div>
+
+    <div class="marquee-group" aria-hidden="true">
+      <span>Case open</span>
+      <span>CSEnigma</span>
+      <span>15-17 November</span>
+      <span>ESI</span>
+      <span>Do not cross the line</span>
+    </div>
+  </div>
+</div>
 
   
-  <section id="about"></section>
+  <section id="about">
+  <div class="about-content">
+    <div class="about-eyebrow">
+      <span class="about-line"></span>
+      <span class="about-tag">About</span>
+    </div>
+
+    <h2 class="about-title">
+      Every skill <br>
+      <span>holds a clue.</span>
+    </h2>
+
+    <p class="about-text">
+      CSEnigma is a three-day detective-style event by the Club CSE, inspired by Detective Conan. Teams become detectives: they collect clues, rebuild a story and build their own solution.
+    </p>
+  </div>
+
+   <img class="about-image" src="assets/images/conan-family.png" alt="Detective Conan characters">
+
+  <div class="about-stats">
+    <div class="stat">
+      <span class="stat-number">03</span>
+      <span class="stat-label">Days</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number">04</span>
+      <span class="stat-label">Fields</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number">01</span>
+      <span class="stat-label">Mystery</span>
+    </div>
+  </div>
+</section>
 
   
   <section id="team"></section>
@@ -48,5 +168,6 @@
   
   <footer id="footer"></footer>
 
+  <script src="js/countdown.js"></script>
 </body>
 </html>
