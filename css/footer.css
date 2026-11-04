@@ -1,1 +1,16 @@
-/* footer styles */
+/* Contact section */
+.case-contact{position:relative;overflow:hidden;min-height:680px;padding:36px clamp(20px,6vw,115px) 70px;color:#fff;background:radial-gradient(ellipse 70% 90% at 100% 60%,#273550 0%,#0a1832 45%,#000f20 80%)}
+.case-contact h2{font-family:var(--font-title);font-size:clamp(22px,3vw,48px);line-height:1.15;text-transform:uppercase;letter-spacing:.06em}
+.contact-logos{display:flex;align-items:center;gap:60px;margin:35px 0 20px 8vw}
+.contact-logos img{height:clamp(90px,16vw,240px);width:auto}
+.case-contact h3,.case-contact>p{width:min(620px,100%);margin-left:8vw;text-align:center}
+.case-contact h3{font-family:var(--font-title);font-size:clamp(24px,3vw,44px);color:#e8cd48;text-transform:uppercase;margin-top:20px}
+.case-contact>p{font:clamp(17px,2vw,28px) Newsreader,serif}
+.case-contact>p a{color:#e30613;text-decoration:none}
+.case-social{display:flex;gap:24px;margin:35px 0 0 17vw}
+.case-social a{color:#fff;font-size:48px}
+.case-action{position:absolute;right:3%;top:6%;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:0}
+.case-bubble{position:relative;z-index:1;width:clamp(200px,20vw,270px);padding:clamp(25px,4vw,48px) 16px;background:#d8d8d8;color:#071326;border-radius:24% 24% 22% 22%;text-align:center;font:400 clamp(16px,1.6vw,25px)/1.3 Newsreader,serif;text-transform:none;white-space:nowrap}
+.case-bubble::after{content:"";position:absolute;left:48%;bottom:-17px;width:34px;height:28px;background:inherit;clip-path:polygon(0 0,100% 0,100% 100%)}
+.case-mascot{display:block;width:auto;height:calc(100% - 150px);max-width:clamp(190px,21vw,290px);object-fit:contain;object-position:top center;margin-top:0}
+@media(max-width:700px){.contact-logos{justify-content:center;margin-left:0}.case-contact h3,.case-contact>p{margin-left:0}.case-social{justify-content:center;margin-left:0}.case-action{right:8px;top:30px;bottom:0;gap:0;z-index:1}.case-bubble{width:clamp(150px,40vw,200px);padding:18px 8px;font-size:clamp(13px,3.5vw,16px)}.case-mascot{height:calc(100% - 115px);max-width:clamp(120px,35vw,180px);opacity:1}.case-contact{padding-bottom:270px}}

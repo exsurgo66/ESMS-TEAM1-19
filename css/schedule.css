@@ -1,1 +1,10 @@
-/* shedule styles */
+/* Schedule section */
+.case-schedule{position:relative;overflow:hidden;padding:clamp(48px,7vw,110px) clamp(20px,6vw,115px);color:#fff;background:#000f20}
+.case-schedule h2{font:900 clamp(26px,4vw,64px)/1.15 Orbitron,sans-serif;text-transform:uppercase;letter-spacing:.06em;text-shadow:4px 4px #0057f0}
+.case-tabs{display:flex;justify-content:center;gap:clamp(12px,3vw,50px);margin:clamp(36px,6vw,80px) 0}
+.case-tab{width:clamp(90px,16vw,240px);padding:14px 8px;color:#fff;background:#000f20;border:2px solid #fff;border-radius:10px;box-shadow:5px 5px #e30613;font:700 clamp(12px,1.1vw,18px) Orbitron,sans-serif;cursor:pointer}
+.case-tab.active{background:#e8cd48;border-color:#e8cd48;color:#0a1330}
+.case-day{display:none;list-style:none;width:min(1150px,100%);margin:auto}
+.case-day.active{display:block}
+.case-day li{display:flex;gap:20px;align-items:center;padding:clamp(12px,1.4vw,22px) 0;border-bottom:1.5px dashed #ffffff66;font:clamp(16px,1.6vw,26px) Newsreader,serif}
+.case-day time{flex:0 0 clamp(85px,15vw,240px);color:#e8cd48;font:500 clamp(12px,1vw,17px) Orbitron,sans-serif}

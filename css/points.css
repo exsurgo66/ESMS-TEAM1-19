@@ -1,1 +1,9 @@
-/* points styles */
+/* Scoring section */
+.case-scores{position:relative;overflow:hidden;padding:clamp(48px,7vw,110px) clamp(20px,6vw,115px);color:#fff;background:#000f20}
+.case-scores h2{font:900 clamp(26px,4vw,64px)/1.15 Orbitron,sans-serif;text-transform:uppercase;letter-spacing:.06em;text-shadow:4px 4px #0057f0}
+.score-cards{display:flex;justify-content:center;flex-wrap:wrap;gap:18px;margin:55px 0 0}
+.score-card{width:clamp(135px,17vw,240px);aspect-ratio:1.16;padding:22px;display:flex;flex-direction:column;justify-content:flex-end;border-radius:24px;color:#0a1330}
+.score-card b{font:900 clamp(54px,7vw,100px)/1 Orbitron,sans-serif;margin-bottom:12px}
+.score-card span{font:clamp(14px,1.35vw,21px)/1.1 Newsreader,serif}
+.score-first{background:#e8cd48}.score-second{background:#d8dce8}.score-third{background:#0057f0}.score-other{background:#f8fafd}
+.score-hint{display:inline-block;margin-top:48px;padding:20px;border:2px dashed #e8cd48;border-radius:18px;font:clamp(16px,1.5vw,24px) Newsreader,serif}

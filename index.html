@@ -10,6 +10,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Orbitron:wght@700&family=Sawarabi+Mincho&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Newsreader:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <!-- Shared base styles (owner: lead) -->
   <link rel="stylesheet" href="css/style.css">
@@ -203,15 +205,69 @@
   </div>
  </section>
 
-  <section id="schedule"></section>
+  <section id="schedule" class="case-schedule">
+    <h2>Three days on the case</h2>
+    <div class="case-tabs" role="tablist" aria-label="Event schedule">
+      <button class="case-tab active" type="button" role="tab" aria-selected="true" aria-controls="day-1" data-day="day-1">Day 1</button>
+      <button class="case-tab" type="button" role="tab" aria-selected="false" aria-controls="day-2" data-day="day-2">Day 2</button>
+      <button class="case-tab" type="button" role="tab" aria-selected="false" aria-controls="day-3" data-day="day-3">Day 3</button>
+    </div>
+    <ul class="case-day active" id="day-1" role="tabpanel">
+      <li><time>9h00</time><span>Check-in</span></li>
+      <li><time>9h30</time><span>Ice breaker, activities and questions</span></li>
+      <li><time>10h30</time><span>Team assignments and presentations</span></li>
+      <li><time>11h30</time><span>Lunch break</span></li>
+      <li><time>13h30</time><span>Story reveal and rules</span></li>
+      <li><time>14h00</time><span>First clues and team discussions</span></li>
+      <li><time>16h30</time><span>Coffee break and activities</span></li>
+      <li><time>21h00</time><span>Dinner</span></li>
+    </ul>
+    <ul class="case-day" id="day-2" role="tabpanel" hidden></ul>
+    <ul class="case-day" id="day-3" role="tabpanel" hidden></ul>
+  </section>
 
   
-  <section id="points"></section>
+  <section id="points" class="case-scores">
+    <h2>The first to crack a clue scores most</h2>
+    <div class="score-cards">
+      <div class="score-card score-first"><b>20</b><span>1st team to find a clue</span></div>
+      <div class="score-card score-second"><b>10</b><span>2nd team</span></div>
+      <div class="score-card score-third"><b>5</b><span>3rd team</span></div>
+      <div class="score-card score-other"><b>2</b><span>Every other team</span></div>
+    </div>
+    <p class="score-hint">Stuck? A team can buy a hint for 5 points.</p>
+  </section>
 
   
-  <footer id="footer"></footer>
+  <footer id="footer" class="case-contact">
+    <h2>Still have questions</h2>
+    <div class="contact-logos">
+      <img src="assets/images/logo-bulb.svg" alt="Club CSE" onerror="this.style.display='none'">
+      <img src="assets/images/csenigma-logo.svg" alt="CSEnigma" onerror="this.style.display='none'">
+    </div>
+    <h3>Contact us</h3>
+    <p>By email <a href="mailto:cse@esi.dz">cse@esi.dz</a> or on social media:</p>
+    <div class="case-social">
+      <a href="#" aria-label="Facebook"><i class="fa-brands fa-square-facebook"></i></a>
+      <a href="#" aria-label="Instagram"><i class="fa-brands fa-square-instagram"></i></a>
+      <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+      <a href="#" aria-label="YouTube"><i class="fa-brands fa-square-youtube"></i></a>
+    </div>
+    <div class="case-action">
+      <div class="case-bubble">Your turn, detective!</div>
+      <img class="case-mascot" src="assets/images/mascot.png" alt="" onerror="this.style.display='none'">
+    </div>
+  </footer>
 
   <script src="js/countdown.js"></script>
   <script src="js/cursor.js"></script>
+  <script>
+    document.querySelectorAll('.case-tab').forEach(function(tab){tab.addEventListener('click',function(){
+      document.querySelectorAll('.case-tab').forEach(function(button){button.classList.remove('active');button.setAttribute('aria-selected','false')});
+      document.querySelectorAll('.case-day').forEach(function(day){day.classList.remove('active');day.hidden=true});
+      tab.classList.add('active');tab.setAttribute('aria-selected','true');
+      var panel=document.getElementById(tab.dataset.day);panel.hidden=false;panel.classList.add('active');
+    })});
+  </script>
 </body>
 </html>
