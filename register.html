@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register | CSenigma</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/register.css">
+</head>
+<body class="reg-page">
+  <img class="reg-steps" src="assets/images/Group_7.png" alt="">
+
+  <header class="reg-header">
+    <a href="index.html" class="reg-logo">CSENIGMA</a>
+    <a href="index.html" class="reg-back">&larr; Back to the website</a>
+  </header>
+
+  <main class="reg-main">
+    <form class="reg-card" id="reg-form" action="#" method="post">
+
+      <div class="reg-section"><span class="reg-tag">1</span><span class="reg-line"></span></div>
+      <div class="reg-grid">
+        <label class="reg-field">First name *
+          <input type="text" name="first_name" required>
+        </label>
+        <label class="reg-field">Last name *
+          <input type="text" name="last_name" required>
+        </label>
+        <label class="reg-field">Email *
+          <input type="email" name="email" placeholder="name@example.com" required>
+        </label>
+        <label class="reg-field">Phone number *
+          <input type="tel" name="phone" placeholder="0555 12 34 56" required>
+        </label>
+      </div>
+
+      <div class="reg-section"><span class="reg-tag">2</span><span class="reg-line"></span></div>
+      <div class="reg-grid">
+        <label class="reg-field">School or university *
+          <input type="text" name="school" required>
+        </label>
+        <label class="reg-field">Year or level *
+        <select name="level" required>
+            <option value="" selected disabled>Select...</option>
+            <option>1CP / L1</option>
+            <option>2CP / L2</option>
+            <option>1CS / L3</option>
+            <option>2CS / M1</option>
+            <option>3CS / M2</option>
+        </select>
+        </label>
+
+        <fieldset class="reg-field reg-full">
+          <legend>Your field *</legend>
+          <div class="reg-pills">
+            <label><input type="radio" name="field" value="Development" checked><span>Development</span></label>
+            <label><input type="radio" name="field" value="Graphic Design"><span>Graphic Design</span></label>
+            <label><input type="radio" name="field" value="UI/UX"><span>UI/UX</span></label>
+            <label><input type="radio" name="field" value="Multimedia"><span>Multimedia</span></label>
+          </div>
+        </fieldset>
+
+        <label class="reg-field">Experience level
+          <select name="experience">
+            <option value="" selected>Select...</option>
+            <option>Beginner</option>
+            <option>Intermediate</option>
+            <option>Advanced</option>
+          </select>
+        </label>
+        <label class="reg-field">Portfolio, GitHub or LinkedIn
+          <input type="url" name="portfolio" placeholder="https://">
+        </label>
+      </div>
+
+      <div class="reg-section"><span class="reg-tag">3</span><span class="reg-line"></span></div>
+      <p class="reg-label">I can attend *</p>
+      <div class="reg-days">
+        <div class="reg-day"><strong>Day 1</strong><span>15 November · from 9h00</span></div>
+        <div class="reg-day"><strong>Day 2</strong><span>16 November · from 8h00</span></div>
+        <div class="reg-day"><strong>Day 3</strong><span>17 November · until 17h30</span></div>
+      </div>
+      <label class="reg-check">
+        <input type="checkbox" name="available" required>
+        <span>I confirm that I'm available for the three days, from check-in to closing, at ESI, Oued Smar.</span>
+      </label>
+
+      <div class="reg-section"><span class="reg-tag">4</span><span class="reg-line"></span></div>
+      <label class="reg-field">Dietary requirements
+        <input type="text" name="dietary" placeholder="Optional">
+      </label>
+      <label class="reg-check">
+        <input type="checkbox" name="share_partners">
+        <span>Optional: partner companies may see my name, field and portfolio link.</span>
+      </label>
+      <label class="reg-check">
+        <input type="checkbox" name="agree" required>
+        <span>I agree to be contacted about CSEnigma and to follow the event rules. *</span>
+      </label>
+
+      <div class="reg-actions">
+        <button type="submit" class="reg-confirm">Confirm</button>
+        <span class="reg-required">* Required</span>
+      </div>
+    </form>
+
+    <!-- Success message -->
+    <div class="reg-card reg-success" id="reg-success" hidden>
+      <div class="reg-check-circle">
+        <svg viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="#000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+      </div>
+      <h2>Your application is saved</h2>
+      <p>Thanks, detective! We'll contact you soon with the next steps.</p>
+      <a href="index.html" class="reg-confirm">Back to the website</a>
+    </div>
+  </main>
+
+  <script>
+    const form = document.getElementById('reg-form');
+    const success = document.getElementById('reg-success');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault(); // the browser has already checked the required fields
+      console.log(Object.fromEntries(new FormData(form).entries())); // TODO: send to your backend
+      form.hidden = true;
+      success.hidden = false;
+      window.scrollTo(0, 0);
+    });
+  </script>
+</body>
+</html>
