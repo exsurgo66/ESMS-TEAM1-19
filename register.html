@@ -18,7 +18,7 @@
   </header>
 
   <main class="reg-main">
-    <form class="reg-card" id="reg-form" action="#" method="post">
+    <form class="reg-card" id="reg-form" action="#" method="post" novalidate>
 
       <div class="reg-section"><span class="reg-tag">1</span><span class="reg-line"></span></div>
       <div class="reg-grid">
@@ -32,7 +32,7 @@
           <input type="email" name="email" placeholder="name@example.com" required>
         </label>
         <label class="reg-field">Phone number *
-          <input type="tel" name="phone" placeholder="0555 12 34 56" required>
+          <input type="tel" name="phone" inputmode="numeric" pattern="0[567][0-9]{8}" maxlength="10" placeholder="0555 12 34 56" title="Enter 10 digits starting with 05, 06, or 07." required>
         </label>
       </div>
 
@@ -62,8 +62,8 @@
           </div>
         </fieldset>
 
-        <label class="reg-field">Experience level
-          <select name="experience">
+        <label class="reg-field">Experience level *
+          <select name="experience" required>
             <option value="" selected>Select...</option>
             <option>Beginner</option>
             <option>Intermediate</option>
@@ -78,13 +78,13 @@
       <div class="reg-section"><span class="reg-tag">3</span><span class="reg-line"></span></div>
       <p class="reg-label">I can attend *</p>
       <div class="reg-days">
-        <div class="reg-day"><strong>Day 1</strong><span>15 November · from 9h00</span></div>
-        <div class="reg-day"><strong>Day 2</strong><span>16 November · from 8h00</span></div>
-        <div class="reg-day"><strong>Day 3</strong><span>17 November · until 17h30</span></div>
+        <label class="reg-day"><input type="checkbox" name="attending_days" value="Day 1"><strong>Day 1</strong><span>15 November · from 9h00</span></label>
+        <label class="reg-day"><input type="checkbox" name="attending_days" value="Day 2"><strong>Day 2</strong><span>16 November · from 8h00</span></label>
+        <label class="reg-day"><input type="checkbox" name="attending_days" value="Day 3"><strong>Day 3</strong><span>17 November · until 17h30</span></label>
       </div>
       <label class="reg-check">
-        <input type="checkbox" name="available" required>
-        <span>I confirm that I'm available for the three days, from check-in to closing, at ESI, Oued Smar.</span>
+        <input type="checkbox" id="attend-all-days" name="attend_all_days">
+        <span>I can attend all days</span>
       </label>
 
       <div class="reg-section"><span class="reg-tag">4</span><span class="reg-line"></span></div>
@@ -121,7 +121,69 @@
     const form = document.getElementById('reg-form');
     const success = document.getElementById('reg-success');
 
+    const dayOptions = Array.from(form.querySelectorAll('input[name="attending_days"]'));
+    const attendAllDays = document.getElementById('attend-all-days');
+    let attemptedSubmit = false;
+
+    function errorTarget(control) {
+      if (control.name === 'attending_days') return form.querySelector('.reg-days');
+      if (control.name === 'field') return control.closest('fieldset');
+      return control.closest('.reg-field, .reg-check');
+    }
+
+    function errorMessage(control) {
+      if (control.name === 'attending_days') return 'Select at least one day you can attend.';
+      if (control.validity.valueMissing) return 'This field is required.';
+      if (control.name === 'phone' && control.validity.patternMismatch) return 'Enter 10 digits starting with 05, 06, or 07.';
+      if (control.validity.typeMismatch) return 'Enter a valid ' + (control.type === 'email' ? 'email address.' : 'URL.');
+      if (control.validity.patternMismatch) return 'Check the value format.';
+      return 'Check this field.';
+    }
+
+    function updateErrors() {
+      const invalidControls = Array.from(form.querySelectorAll('input, select, textarea')).filter(function (control) {
+        return !control.disabled && !control.validity.valid;
+      });
+      const daysMissing = !dayOptions.some(function (day) { return day.checked; });
+      form.querySelectorAll('.reg-error').forEach(function (error) { error.remove(); });
+      form.querySelectorAll('[aria-invalid="true"]').forEach(function (control) { control.removeAttribute('aria-invalid'); });
+
+      invalidControls.forEach(function (control) {
+        if (control.name === 'attending_days' && !daysMissing) return;
+        if (control.type === 'radio' && form.querySelector('input[name="field"]:checked')) return;
+        const target = errorTarget(control);
+        if (!target || target.querySelector('.reg-error')) return;
+        const error = document.createElement('span');
+        error.className = 'reg-error';
+        error.textContent = errorMessage(control);
+        target.appendChild(error);
+        control.setAttribute('aria-invalid', 'true');
+      });
+
+      if (daysMissing) {
+        const target = form.querySelector('.reg-days');
+        const error = document.createElement('span');
+        error.className = 'reg-error';
+        error.textContent = 'Select at least one day you can attend.';
+        target.appendChild(error);
+        dayOptions.forEach(function (day) { day.setAttribute('aria-invalid', 'true'); });
+      }
+      return invalidControls.length === 0 && !daysMissing;
+    }
+    attendAllDays.addEventListener('change', function () {
+      dayOptions.forEach(function (day) { day.checked = attendAllDays.checked; });
+    });
+    dayOptions.forEach(function (day) {
+      day.addEventListener('change', function () {
+        attendAllDays.checked = dayOptions.every(function (option) { return option.checked; });
+      });
+    });
+    form.addEventListener('input', function () { if (attemptedSubmit) updateErrors(); });
+    form.addEventListener('change', function () { if (attemptedSubmit) updateErrors(); });
+
     form.addEventListener('submit', function (e) {
+      attemptedSubmit = true;
+      if (!updateErrors()) { e.preventDefault(); return; }
       e.preventDefault(); // the browser has already checked the required fields
       console.log(Object.fromEntries(new FormData(form).entries())); // TODO: send to your backend
       form.hidden = true;
